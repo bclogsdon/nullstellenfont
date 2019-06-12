@@ -47,18 +47,18 @@ set_rep(".", (0.3 + x)^2 + (0.3 + y)^2)
 set_rep("!", (-(-1 + 16*(0.2 + x)^2 + 3.5*(0.45 - y))^2 + 3.0625*(1 - 16*(0.2 + x)^2)*(0.45 - y)^2)*(-0.01 + (0.2 + x)^2 + (0.3 + y)^2))
 set_rep(" ", 1)
 
-def polyscript(text):
+def nulstellenfont(text):
     poly = 1
     for i in range(len(text)):
         poly = poly * get_rep(text[i], i)
     return poly
 
-def polyscript_plot(text):
-    poly = polyscript(text)
+def nulstellenfont_plot(text):
+    poly = nulstellenfont(text)
     f(x,y) = poly(x = x, y = y)
     return implicit_plot(f, (x, -.5, -.5 + len(text)), (y, -.5,.5), plot_points = 1000, axes = False, frame = False, figsize = 20)
 
-def polyscript_save(text, name = None):
+def nulstellenfont_save(text, name = None):
     if (not name):
-        name = "polyscript_" + text + ".png"
-    polyscript_plot(text).save(name)
+        name = "nulstellenfont_" + text + ".png"
+    nulstellenfont_plot(text).save(name)
