@@ -1,4 +1,4 @@
-# Generates name varieties
+# Generates text varieties
 # (c) 2019 anya michaelsen, ben c. logsdon, ralph morrison
 
 var('x')
@@ -47,18 +47,18 @@ set_rep(".", (0.3 + x)^2 + (0.3 + y)^2)
 set_rep("!", (-(-1 + 16*(0.2 + x)^2 + 3.5*(0.45 - y))^2 + 3.0625*(1 - 16*(0.2 + x)^2)*(0.45 - y)^2)*(-0.01 + (0.2 + x)^2 + (0.3 + y)^2))
 set_rep(" ", 1)
 
-def nulstellenfont(text):
+def nullstellenfont(text):
     poly = 1
     for i in range(len(text)):
         poly = poly * get_rep(text[i], i)
     return poly
 
-def nulstellenfont_plot(text):
-    poly = nulstellenfont(text)
+def nullstellenfont_plot(text):
+    poly = nullstellenfont(text)
     f(x,y) = poly(x = x, y = y)
     return implicit_plot(f, (x, -.5, -.5 + len(text)), (y, -.5,.5), plot_points = 1000, axes = False, frame = False, figsize = 20)
 
-def nulstellenfont_save(text, name = None):
+def nullstellenfont_save(text, name = None):
     if (not name):
-        name = "nulstellenfont_" + text + ".png"
-    nulstellenfont_plot(text).save(name)
+        name = "nullstellenfont_" + text + ".png"
+    nullstellenfont_plot(text).save(name)
