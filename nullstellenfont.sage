@@ -1,6 +1,8 @@
 # Generates text varieties
 # (c) 2019 anya michaelsen, ben c. logsdon, ralph morrison
 
+# establishes that we will be working with polynomials
+# in two variables, x and y, with rational coefficients
 var('x')
 var('y')
 R = QQ[x,y]
@@ -8,14 +10,23 @@ R = QQ[x,y]
 scurve(hscale, vscale) = (35.937*x^3)/hscale^3 + (3.3*y)/vscale - (35.937*x*y^2)/(hscale*vscale^2) - (35.937*y^3)/vscale^3
 loopy(hoffset, voffset) = -0.015625*((-hoffset + x)^2 + (-voffset + y)^2) + (-0.25*(-hoffset + x) + (-hoffset + x)^2 + (-voffset + y)^2)^2
 
+# we store the equations for each letter in a dictionary called 'reps'
 reps = {}
 
+# method for setting the polynomial
+# corresponding to a given letter
 def set_rep(letter, poly):
     reps[letter] = poly
 
+# method for retreiving the polynomial of a given
+# character with and optional shift parameter that
+# replaces 'x' with 'x-shift' in the polynomial
+# to translate where the letter is plotted
+# corresponding to its location in the string
 def get_rep(letter, shift = 0):
     return reps[letter].substitute(x==(x-shift))
 
+# populate the reps dictionary for each letter 
 set_rep("A", (0.091 + 1.05*x + 2.626*x^2 - 0.512*y - 2.56*x*y + 0.706*y^2)*(0.091 - 1.05*x + 2.626*x^2 - 0.512*y + 2.56*x*y + 0.706*y^2)*(-0.0025 + x^2 + 1.34*y^2))
 set_rep("B", (-0.015625*((0.2 + x)^2 + (-0.25 + y)^2) + (-0.25*(0.2 + x) + (0.2 + x)^2 + (-0.25 + y)^2)^2)*(0.0735 + 0.836*x + 2.12*x^2 - 0.00003*y + 0.029*x*y + 0.068*y^2)* (-0.015625*((0.2 + x)^2 + (0.15 + y)^2) + (-0.25*(0.2 + x) + (0.2 + x)^2 + (0.15 + y)^2)^2))
 set_rep("C", (-0.8 + x)*(-2 - 10*(0.2 + x))*(-(0.2 + x)^2 + 2*y^2) - 100*(-0.75*(0.2 + x) + (0.2 + x)^2 + 2*y^2)^2)
@@ -47,17 +58,23 @@ set_rep(".", (0.3 + x)^2 + (0.3 + y)^2)
 set_rep("!", (-(-1 + 16*(0.2 + x)^2 + 3.5*(0.45 - y))^2 + 3.0625*(1 - 16*(0.2 + x)^2)*(0.45 - y)^2)*(-0.01 + (0.2 + x)^2 + (0.3 + y)^2))
 set_rep(" ", 1)
 
+# input:  string of text to plot
+# output: the polynomial for that text
 def nullstellenfont(text):
     poly = 1
     for i in range(len(text)):
         poly = poly * get_rep(text[i], i)
     return poly
 
+# input:  string of text to plot
+# output: a plot of that text
 def nullstellenfont_plot(text):
     poly = nullstellenfont(text)
     f(x,y) = poly(x = x, y = y)
     return implicit_plot(f, (x, -.5, -.5 + len(text)), (y, -.5,.5), plot_points = 1000, axes = False, frame = False, figsize = 20)
 
+# input:  string of text to plot
+# output: saves a PNG file of the plot
 def nullstellenfont_save(text, name = None):
     if (not name):
         name = "nullstellenfont_" + text + ".png"
