@@ -40,7 +40,8 @@ def set_rep(letter, poly):
 # to translate where the letter is plotted
 # corresponding to its location in the string
 def get_rep(letter, shift = 0):
-    return reps[letter].substitute(x==(x-shift))
+    letter = letter.upper()
+    return reps.get(letter, symbolic_expression(1)).substitute(x==(x-shift))
 
 # populate the reps dictionary for each letter 
 set_rep("A", (0.091 + 1.05*x + 2.626*x^2 - 0.512*y - 2.56*x*y + 0.706*y^2)*(0.091 - 1.05*x + 2.626*x^2 - 0.512*y + 2.56*x*y + 0.706*y^2)*(-0.0025 + x^2 + 1.34*y^2))
