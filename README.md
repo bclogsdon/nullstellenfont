@@ -1,5 +1,10 @@
 # Nullstellenfont: Typesetting with Algebraic Curves
+
 Nullstellenfont was developed to graph text using algebraic curves known as *varieties* in Algebraic Geometry. 
+For example the font name typeset in the font looks like: 
+
+![Typeset Font Name](https://github.com/bclogsdon/nullstellenfont/blob/master/nullstellenfont_NULLSTELLENFONT.png)
+
 
 ## Installation 
 To use Nullstellenfont, download the file "nullstellenfont.sage" then load it into your favorite interactive Sage platform by:
