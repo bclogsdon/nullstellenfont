@@ -10,7 +10,7 @@ For example the font name typeset in the font looks like:
 To use Nullstellenfont, download the file "nullstellenfont.sage" then load it into your favorite interactive Sage platform by:
 
 ```python
-load("nullstellentfont.sage")
+load("nullstellenfont.sage")
 ```
 
 For a great online Sage editor we recommend [CoCalc](https://cocalc.com) where you can use the ">_Shell" button to load the file. 
@@ -22,16 +22,16 @@ Nullstellenfont works by taking a string of text, constructing a polynomial from
 #### Generating Polynomials
 To generate a polynomial use the method 'nullstellenfont' and enter a string of text.
 ```python
-nullstellentfont("HELLO WORLD")
+nullstellenfont("HELLO WORLD")
 ```
 This will return a polynomial that defines the vareity of that text. Letters not defined in the 'reps' dictionary at the beginning of the code will be skipped. 
 
 #### Plotting Polynomials
-To generate a plot of your text, use the 'nullstellentfont_save' method and enter your string of text as follows:
+To generate a plot of your text, use the 'nullstellenfont_save' method and enter your string of text as follows:
 ```python 
-nullstellentfont_save("HELLO WORLD")
+nullstellenfont_save("HELLO WORLD")
 ```
-This will save a file called 'nullstellentfont_HELLO WORLD.png'. To specify a different file name enter that as an optional second parameter. 
+This will save a file called 'nullstellenfont_HELLO WORLD.png'. To specify a different file name enter that as an optional second parameter. 
 
 __Note:__ If your string contains characters for which a variety has not been defined in the 'reps' dictionary it will simply skip them and leave a blank space where that character should go. Currently, these the dictionary contains all capital letters and the punctutaion '.', ',', and '!'. The 'reps' dictionary is located in the first section of the code after the method 'get_rep'. 
 
