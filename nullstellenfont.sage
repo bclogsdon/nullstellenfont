@@ -1,6 +1,6 @@
 # Nullstellenfont
 
-# Copyright (C) 2011 Anya Michaelsen, Ben Logsdon, Ralph Morrison
+# Copyright (C) 2019 Anya Michaelsen, Ben Logsdon, Ralph Morrison
 
 # Authors: Anya Michaelsen <anya.michaelsen2@gmail.com>, Ben Logsdon <bclogsdon@gmail.com>
 
